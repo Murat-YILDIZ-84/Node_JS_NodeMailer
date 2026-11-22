@@ -1,11 +1,20 @@
 require('dotenv').config();
 
 const express = require("express");
+const cors = require('cors');
 const app = express();
 const nodemailer = require("nodemailer");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-credentials", true);
+    res.header("Access-Control-Allow-Methods", "GET, POST, PATCH");
+    next();
+});
 
 async function sendGmail() {
     var result = "";
