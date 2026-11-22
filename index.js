@@ -53,6 +53,14 @@ async function sendGmail() {
     return result;
 }
 
+app.get("/", (req, res) => {
+    const _date = new Date().toLocaleString("sv");
+
+    res.writeHead(200, {'Content-Type': 'text/json'});
+    res.write("[" + _date + "] Ready");
+    res.end();
+})
+
 app.get("/test", (req, res) => {
     const _date = new Date().toLocaleString("sv");
 
