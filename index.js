@@ -25,6 +25,9 @@ async function sendGmail() {
             host: "smtp.gmail.com",
             port: 465,
             secure: true,
+            connectionTimeout: 10000,
+            greetingTimeout: 10000,
+            socketTimeout: 10000,
             tls: { rejectUnauthorized: false },
             auth: {
                 user: process.env.GMAIL_USER,
